@@ -13,8 +13,14 @@
 
 ## Create Base64 string
 
-Run powershell command -
+Powershell OneLiner -
 `[System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes(".\Path\To\sample.exe")) > sample.b64`
+
+C# Code
+`// Code Block to B64 encode contents of a exe.
+byte[] Filecont = System.IO.File.ReadAllBytes(args[0]);
+string B64Filecont = Convert.ToBase64String(Filecont,0,Filecont.Length);`
+
 
 
 ## Similar Projects
