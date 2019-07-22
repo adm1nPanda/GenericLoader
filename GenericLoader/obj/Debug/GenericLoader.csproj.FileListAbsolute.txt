@@ -5,3 +5,10 @@ C:\Users\dushy\source\repos\GenericLoader\GenericLoader\obj\Debug\GenericLoader.
 C:\Users\dushy\source\repos\GenericLoader\GenericLoader\obj\Debug\GenericLoader.csproj.CoreCompileInputs.cache
 C:\Users\dushy\source\repos\GenericLoader\GenericLoader\obj\Debug\GenericLoader.exe
 C:\Users\dushy\source\repos\GenericLoader\GenericLoader\obj\Debug\GenericLoader.pdb
+C:\Users\Dushyanth Chowdary\Desktop\GenericLoader\GenericLoader\bin\Debug\GenericLoader.exe.config
+C:\Users\Dushyanth Chowdary\Desktop\GenericLoader\GenericLoader\bin\Debug\GenericLoader.exe
+C:\Users\Dushyanth Chowdary\Desktop\GenericLoader\GenericLoader\bin\Debug\GenericLoader.pdb
+C:\Users\Dushyanth Chowdary\Desktop\GenericLoader\GenericLoader\obj\Debug\GenericLoader.csprojAssemblyReference.cache
+C:\Users\Dushyanth Chowdary\Desktop\GenericLoader\GenericLoader\obj\Debug\GenericLoader.csproj.CoreCompileInputs.cache
+C:\Users\Dushyanth Chowdary\Desktop\GenericLoader\GenericLoader\obj\Debug\GenericLoader.exe
+C:\Users\Dushyanth Chowdary\Desktop\GenericLoader\GenericLoader\obj\Debug\GenericLoader.pdb

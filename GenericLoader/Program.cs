@@ -29,17 +29,25 @@ namespace GenericLoader
             if (args.Length < 1)
             {
                 Console.WriteLine("Application requires a Base64 encoded binary as an argument. \nExample : ./GenericLoader.exe <PATH TO B64 File>");
+                System.Environment.Exit(0);
             }
 
             if(args[0] != null)
             {
-                Console.WriteLine("[*] Reading Base64 from File.");
-                
 
                 //Decode B64 string passed via arguments
-                byte[] ShellCode = Convert.FromBase64String(args[0]);
+                Console.WriteLine("[*] Reading Base64 from File.");
+                string fbyte = System.IO.File.ReadAllText(args[0]);
+                byte[] ShellCode = Convert.FromBase64String(fbyte);
+                Console.WriteLine(ShellCode.Length);
 
-                
+                //Redirect all STDOUT to a stream
+                MemoryStream stream = new MemoryStream();
+                StreamWriter sw = new StreamWriter(stream);
+                TextWriter old_stdout = Console.Out;
+                Console.SetOut(sw);
+
+
                 //Executing Shellcode Extracted from B64 String
                 if (ShellCode.Length > 0)
                 {
@@ -67,7 +75,12 @@ namespace GenericLoader
                         Console.WriteLine("Loading assembly fails. Possible that shellcode was built with a later .NET framework");
                     }
                 }
-                
+
+                Console.SetOut(old_stdout);
+                sw.Flush();
+                string output = Encoding.ASCII.GetString(stream.ToArray());
+                sw.Close();
+                Console.WriteLine(output);
             }
 
             
