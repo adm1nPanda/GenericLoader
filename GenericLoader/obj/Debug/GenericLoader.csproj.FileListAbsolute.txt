@@ -1,0 +1,7 @@
+C:\Users\dushy\source\repos\GenericLoader\GenericLoader\bin\Debug\GenericLoader.exe.config
+C:\Users\dushy\source\repos\GenericLoader\GenericLoader\bin\Debug\GenericLoader.exe
+C:\Users\dushy\source\repos\GenericLoader\GenericLoader\bin\Debug\GenericLoader.pdb
+C:\Users\dushy\source\repos\GenericLoader\GenericLoader\obj\Debug\GenericLoader.csprojAssemblyReference.cache
+C:\Users\dushy\source\repos\GenericLoader\GenericLoader\obj\Debug\GenericLoader.csproj.CoreCompileInputs.cache
+C:\Users\dushy\source\repos\GenericLoader\GenericLoader\obj\Debug\GenericLoader.exe
+C:\Users\dushy\source\repos\GenericLoader\GenericLoader\obj\Debug\GenericLoader.pdb
