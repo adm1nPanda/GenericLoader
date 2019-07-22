@@ -35,18 +35,18 @@ namespace GenericLoader
             if(args[0] != null)
             {
 
-                //Decode B64 string passed via arguments
-                Console.WriteLine("[*] Reading Base64 from File.");
-                string fbyte = System.IO.File.ReadAllText(args[0]);
-                byte[] ShellCode = Convert.FromBase64String(fbyte);
-                Console.WriteLine(ShellCode.Length);
-
                 //Redirect all STDOUT to a stream
                 MemoryStream stream = new MemoryStream();
                 StreamWriter sw = new StreamWriter(stream);
                 TextWriter old_stdout = Console.Out;
                 Console.SetOut(sw);
 
+
+                //Decode B64 string passed via arguments
+                Console.WriteLine("[*] Reading Base64 from File.");
+                string fbyte = System.IO.File.ReadAllText(args[0]);
+                byte[] ShellCode = Convert.FromBase64String(fbyte);
+                
 
                 //Executing Shellcode Extracted from B64 String
                 if (ShellCode.Length > 0)
@@ -59,12 +59,14 @@ namespace GenericLoader
                         {
                             Console.WriteLine("[*] Loaded Type {0}", type);
                             object instance = Activator.CreateInstance(type);
-                            object[] ar = new object[] { new string[] { "arg1", "arg2", "arg3" } };
+                            object[] ar = new object[] { new string[] { "" } };
                             try
                             {
-                                object ret = type.GetMethod("Hidden").Invoke(instance, ar);
-                                sb.AppendLine(ret.ToString());
-                            
+                                object ret = type.GetMethod("Main").Invoke(instance, ar);
+                                if (ret != null)
+                                {
+                                    sb.AppendLine(ret.ToString());
+                                }                        
                             }
                             catch (Exception e){ Console.WriteLine(e); }
 
@@ -80,7 +82,8 @@ namespace GenericLoader
                 sw.Flush();
                 string output = Encoding.ASCII.GetString(stream.ToArray());
                 sw.Close();
-                Console.WriteLine(output);
+                sb.AppendLine(output);
+                
             }
 
             
