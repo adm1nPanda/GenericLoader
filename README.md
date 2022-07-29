@@ -4,7 +4,10 @@ Use tool to execute shellcode in memory and redirect STDOUT to a stream which ca
 
 ## Command to execute
 
-`./GenericLoader.exe <PATH TO B64 File>`
+`./GenericLoader.exe <PATH TO b64 of EXE> <args for exe>(user blank quotes if no args)
+eg:
+./GenericLoader.exe b64_of_notepad.txt ""
+`
 
 
 ## Program execution steps
