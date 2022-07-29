@@ -27,6 +27,7 @@ byte[] Filecont = System.IO.File.ReadAllBytes(args[0]);
 string B64Filecont = Convert.ToBase64String(Filecont,0,Filecont.Length);`
 
 Cmd.exe
+
 `
 CertUtil -encode <target_exe> <out_file>
 //Remove Certificate Headers from <out_file> after command executes
