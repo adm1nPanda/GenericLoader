@@ -21,6 +21,12 @@ namespace GenericLoader
                 var b64ShellCode = File.ReadAllText(args[0]);
                 byte[] ShellCode = Convert.FromBase64String(b64ShellCode);
 
+                string exeargs = args[1];
+                string[] exeargsplit = exeargs.Split(' ');
+
+                Console.WriteLine("Executing file : " + args[0]);
+                Console.WriteLine("Arguments passed : " + args[1]);
+
                 //Executing Shellcode
                 if (ShellCode.Length > 0) {
                     try {
@@ -28,17 +34,21 @@ namespace GenericLoader
                         var method = assembly.EntryPoint;
                         
                         object instance = assembly.CreateInstance(method.Name);
-                        object[] ar = new object[] { new string[] { args[1] } };
+                        object[] ar = new object[] { exeargsplit };
+                        
                         try {
                             object ret = assembly.EntryPoint.Invoke(instance, ar);
                             if (ret != null) {
                                 Console.WriteLine(ret.ToString());
                             }                        
                         }
-                        catch (Exception e){ Console.WriteLine(e); }
+                        catch (Exception e){
+                            Console.WriteLine("Forwarding an error from the executable");
+                            Console.WriteLine(e); 
+                        }
                     }
                     catch (BadImageFormatException e) {
-                        Console.WriteLine("BadImageFormatExecption: Check Shellcode is x86 or x64.");
+                        Console.WriteLine("BadImageFormatExecption: Loaded x86 Shellcode in x64 exe (or Vice-Versa)");
                     }
                     catch {
                         Console.WriteLine("Loading assembly fails. Possible that shellcode was built with a later .NET framework");
