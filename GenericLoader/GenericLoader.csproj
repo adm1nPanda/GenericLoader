@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>GenericLoader</RootNamespace>
     <AssemblyName>GenericLoader</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <PublishUrl>publish\</PublishUrl>

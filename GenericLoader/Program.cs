@@ -9,18 +9,19 @@ namespace GenericLoader
 {
     class Program {
         public static void Main(string[] args) {
+
             if (args.Length < 1) {
-                Console.WriteLine("Application requires a Base64 encoded binary as an argument. \nExample : ./GenericLoader.exe <PATH TO EXE>");
+                Console.WriteLine("Application requires a b64 of binary as an argument. \nExample : ./GenericLoader.exe <PATH TO b64 of EXE> <args for exe>(user blank quotes if no args)");
                 System.Environment.Exit(0);
             }
 
             if(args[0] != null)
             {
-                //Decode B64 string passed via arguments
                 Console.WriteLine("[*] Reading Bytes from File.");
-                var ShellCode = File.ReadAllBytes(args[0]);
-                
-                //Executing Shellcode Extracted from B64 String
+                var b64ShellCode = File.ReadAllText(args[0]);
+                byte[] ShellCode = Convert.FromBase64String(b64ShellCode);
+
+                //Executing Shellcode
                 if (ShellCode.Length > 0) {
                     try {
                         var assembly = Assembly.Load(ShellCode);
@@ -35,6 +36,9 @@ namespace GenericLoader
                             }                        
                         }
                         catch (Exception e){ Console.WriteLine(e); }
+                    }
+                    catch (BadImageFormatException e) {
+                        Console.WriteLine("BadImageFormatExecption: Check Shellcode is x86 or x64.");
                     }
                     catch {
                         Console.WriteLine("Loading assembly fails. Possible that shellcode was built with a later .NET framework");
